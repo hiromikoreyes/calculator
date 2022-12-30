@@ -35,9 +35,13 @@ function operate(operator, a, b){
 Display Functions
 */
 
-const displayScreen = document.querySelector('#display-screen');
-
+//
+currentOperator = '';
 displayValue = '';
+
+const displayScreen = document.querySelector('#display-screen');
+const equal = document.querySelector('#equal');
+
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
 const three = document.querySelector('#three');
@@ -49,18 +53,35 @@ const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
 
-one.addEventListener('click', displayNumber('1'));
-two.addEventListener('click', displayNumber('2'));
-three.addEventListener('click', displayNumber('3'));
-four.addEventListener('click', displayNumber('4'));
-five.addEventListener('click', displayNumber('5'));
-six.addEventListener('click', displayNumber('6'));
-seven.addEventListener('click', displayNumber('7'));
-eight.addEventListener('click', displayNumber('8'));
-nine.addEventListener('click', displayNumber('9'));
-zero.addEventListener('click', displayNumber('0'));
+one.addEventListener('click', () => displayNumber('1'));
+two.addEventListener('click', () => displayNumber('2'));
+three.addEventListener('click', () => displayNumber('3'));
+four.addEventListener('click', () => displayNumber('4'));
+five.addEventListener('click', () => displayNumber('5'));
+six.addEventListener('click', () => displayNumber('6'));
+seven.addEventListener('click', () => displayNumber('7'));
+eight.addEventListener('click', () => displayNumber('8'));
+nine.addEventListener('click', () => displayNumber('9'));
+zero.addEventListener('click', () => displayNumber('0'));
+
+
+
+equal.addEventListener('click', () => {
+    displayValue = operate(currentOperator, previousValue)
+});
+
 
 function displayNumber(num){
     displayValue += num;
     displayScreen.textContent = displayValue;
 }
+
+
+
+const add = document.querySelector('#add');
+
+add.addEventListener('click', () => {
+    currentOperator = add;
+    previousValue = 
+});
+
