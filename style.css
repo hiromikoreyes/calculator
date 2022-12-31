@@ -28,15 +28,30 @@ body{
 #number-grid{
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 90%;
     background-color: greenyellow;
-    justify-content: center;
+    align-items: space-between;
+    justify-content: space-between;
     align-self: flex-start;
+    gap: 12px;
+
 
 }
 
 
+
+#decimal{
+    flex-grow: 1;
+    margin-left: 9px;
+}
+
+
 #number-grid button{
-    width: 62px;
-    height: 62px;
+    border-radius: 18px;
+    width: 72px;
+    height: 72px;
+}
+
+#clear{
+    width: 80px;   
 }
