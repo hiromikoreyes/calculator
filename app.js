@@ -89,9 +89,10 @@ clear.addEventListener('click', () =>{
 
 //equal button
 function equals(){
-    displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
-    displayScreen.textContent = displayValue;
-
+    if (previousValue != ''){
+        displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
+        displayScreen.textContent = displayValue;
+    }
 }
 
 equal.addEventListener('click', () => {

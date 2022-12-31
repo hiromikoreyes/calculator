@@ -1,0 +1,42 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+}
+
+#calculator{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    background-color: black;
+    width: 400px;
+    height: 650px;
+}
+
+
+#display-screen{
+    margin-top: 30px;
+    width: 300px;
+    height: 100px;
+    padding: 8px;
+    background-color: white;
+}
+
+#number-grid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    background-color: greenyellow;
+    justify-content: center;
+    align-self: flex-start;
+
+}
+
+
+#number-grid button{
+    width: 62px;
+    height: 62px;
+}
