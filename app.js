@@ -19,6 +19,8 @@ function divide(a,b){
 }
 
 function operate(operator, a, b){
+    /*Given the first parameter, perform the corresponding
+    arithmetic operation. with a and b*/
     switch(operator){
         case add:
             return add(a,b);
@@ -35,10 +37,12 @@ function operate(operator, a, b){
 Display Functions
 */
 
-//
+
 currentOperator = '';
 displayValue = '';
+previousValue = ''
 
+//Number Buttons
 const displayScreen = document.querySelector('#display-screen');
 const equal = document.querySelector('#equal');
 
@@ -53,35 +57,68 @@ const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
 
-one.addEventListener('click', () => displayNumber('1'));
-two.addEventListener('click', () => displayNumber('2'));
-three.addEventListener('click', () => displayNumber('3'));
-four.addEventListener('click', () => displayNumber('4'));
-five.addEventListener('click', () => displayNumber('5'));
-six.addEventListener('click', () => displayNumber('6'));
-seven.addEventListener('click', () => displayNumber('7'));
-eight.addEventListener('click', () => displayNumber('8'));
-nine.addEventListener('click', () => displayNumber('9'));
-zero.addEventListener('click', () => displayNumber('0'));
+one.addEventListener('click', () => addDigitToDisplay('1'));
+two.addEventListener('click', () => addDigitToDisplay('2'));
+three.addEventListener('click', () => addDigitToDisplay('3'));
+four.addEventListener('click', () => addDigitToDisplay('4'));
+five.addEventListener('click', () => addDigitToDisplay('5'));
+six.addEventListener('click', () => addDigitToDisplay('6'));
+seven.addEventListener('click', () => addDigitToDisplay('7'));
+eight.addEventListener('click', () => addDigitToDisplay('8'));
+nine.addEventListener('click', () => addDigitToDisplay('9'));
+zero.addEventListener('click', () => addDigitToDisplay('0'));
 
 
-
-equal.addEventListener('click', () => {
-    displayValue = operate(currentOperator, previousValue)
-});
-
-
-function displayNumber(num){
+function addDigitToDisplay(num){
+    //Add the digit num, to the end of the displayValue.
     displayValue += num;
     displayScreen.textContent = displayValue;
 }
 
 
+//equal button
+equal.addEventListener('click', () => {
+    displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
+    displayScreen.textContent = displayValue;
+});
 
-const add = document.querySelector('#add');
 
-add.addEventListener('click', () => {
+
+
+
+const btnAdd = document.querySelector('#add');
+const btnSubtract = document.querySelector('#subtract');
+const btnMultiply = document.querySelector('#multiply');
+const btnDivide = document.querySelector('#divide');
+
+btnAdd.addEventListener('click', () => {
     currentOperator = add;
-    previousValue = 
+    previousValue = displayValue;
+    displayValue = '';
+    displayScreen.textContent = displayValue;
+});
+
+
+btnSubtract.addEventListener('click', () => {
+    currentOperator = subtract;
+    previousValue = displayValue;
+    displayValue = '';
+    displayScreen.textContent = displayValue;
+});
+
+
+btnMultiply.addEventListener('click', () => {
+    currentOperator = multiply;
+    previousValue = displayValue;
+    displayValue = '';
+    displayScreen.textContent = displayValue;
+});
+
+
+btnDivide.addEventListener('click', () => {
+    currentOperator = divide;
+    previousValue = displayValue;
+    displayValue = '';
+    displayScreen.textContent = displayValue;
 });
 
