@@ -45,6 +45,8 @@ previousValue = ''
 //Number Buttons
 const displayScreen = document.querySelector('#display-screen');
 const equal = document.querySelector('#equal');
+const clear = document.querySelector('#clear');
+
 
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
@@ -56,6 +58,7 @@ const seven = document.querySelector('#seven');
 const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
+
 
 one.addEventListener('click', () => addDigitToDisplay('1'));
 two.addEventListener('click', () => addDigitToDisplay('2'));
@@ -76,6 +79,14 @@ function addDigitToDisplay(num){
 }
 
 
+//clear button
+clear.addEventListener('click', () =>{
+    displayValue = '';
+    previousValue = '';
+    displayScreen.textContent = '';
+});
+
+
 //equal button
 equal.addEventListener('click', () => {
     displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
@@ -94,7 +105,6 @@ const btnDivide = document.querySelector('#divide');
 btnAdd.addEventListener('click', () => {
     currentOperator = add;
     previousValue = displayValue;
-    displayValue = '';
     displayScreen.textContent = displayValue;
 });
 
@@ -102,7 +112,6 @@ btnAdd.addEventListener('click', () => {
 btnSubtract.addEventListener('click', () => {
     currentOperator = subtract;
     previousValue = displayValue;
-    displayValue = '';
     displayScreen.textContent = displayValue;
 });
 
@@ -110,7 +119,6 @@ btnSubtract.addEventListener('click', () => {
 btnMultiply.addEventListener('click', () => {
     currentOperator = multiply;
     previousValue = displayValue;
-    displayValue = '';
     displayScreen.textContent = displayValue;
 });
 
@@ -118,7 +126,6 @@ btnMultiply.addEventListener('click', () => {
 btnDivide.addEventListener('click', () => {
     currentOperator = divide;
     previousValue = displayValue;
-    displayValue = '';
     displayScreen.textContent = displayValue;
 });
 
