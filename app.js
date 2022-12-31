@@ -89,18 +89,14 @@ clear.addEventListener('click', () =>{
 
 //equal button
 function equals(){
-    if (previousValue != ''){
-        displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
-        displayScreen.textContent = displayValue;
-    }
+    displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
+    displayScreen.textContent = displayValue;
+
 }
 
 equal.addEventListener('click', () => {
     equals();
 });
-
-
-
 
 
 const btnAdd = document.querySelector('#add');
