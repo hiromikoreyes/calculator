@@ -88,9 +88,15 @@ clear.addEventListener('click', () =>{
 
 
 //equal button
+function equals(){
+    if (previousValue != ''){
+        displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
+        displayScreen.textContent = displayValue;
+    }
+}
+
 equal.addEventListener('click', () => {
-    displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
-    displayScreen.textContent = displayValue;
+    equals();
 });
 
 
@@ -104,6 +110,7 @@ const btnDivide = document.querySelector('#divide');
 
 btnAdd.addEventListener('click', () => {
     currentOperator = add;
+    equals();
     previousValue = displayValue;
     displayScreen.textContent = displayValue;
 });
@@ -111,6 +118,7 @@ btnAdd.addEventListener('click', () => {
 
 btnSubtract.addEventListener('click', () => {
     currentOperator = subtract;
+    equals();
     previousValue = displayValue;
     displayScreen.textContent = displayValue;
 });
@@ -118,6 +126,7 @@ btnSubtract.addEventListener('click', () => {
 
 btnMultiply.addEventListener('click', () => {
     currentOperator = multiply;
+    equals();
     previousValue = displayValue;
     displayScreen.textContent = displayValue;
 });
@@ -125,6 +134,7 @@ btnMultiply.addEventListener('click', () => {
 
 btnDivide.addEventListener('click', () => {
     currentOperator = divide;
+    equals();
     previousValue = displayValue;
     displayScreen.textContent = displayValue;
 });
