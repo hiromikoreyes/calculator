@@ -39,11 +39,13 @@ Display Functions
 
 
 currentOperator = '';
-displayValue = '';
+currentValue = '';
 previousValue = ''
 
 //Number Buttons
-const displayScreen = document.querySelector('#display-current');
+const displayCurrent = document.querySelector('#display-current');
+const displayPrevious = document.querySelector('#display-previous');
+const displayOperator = document.querySelector('#display-operator');
 const equal = document.querySelector('#equal');
 const clear = document.querySelector('#clear');
 
@@ -73,33 +75,36 @@ zero.addEventListener('click', () => addDigitToDisplay('0'));
 
 
 function addDigitToDisplay(num){
-    //Add the digit num, to the end of the displayValue.
-    displayValue += num;
-    displayScreen.textContent = displayValue;
+    //Add the digit num, to the end of the currentValue.
+    currentValue += num;
+    displayCurrent.textContent = currentValue;
 }
 
 
 //clear button
 clear.addEventListener('click', () =>{
-    displayValue = '';
+    currentValue = '';
     previousValue = '';
-    displayScreen.textContent = '';
+    currentOperator = '';
+    displayCurrent.textContent = '';
+    displayPrevious.textContent = '';
 });
 
 
 //equal button
 function equals(){
     if (previousValue != ''){
-        displayValue = operate(currentOperator, (previousValue/1), (displayValue/1));
-        displayScreen.textContent = displayValue;
+        currentValue = operate(currentOperator, (previousValue/1), (currentValue/1));
+        displayCurrent.textContent = currentValue;
     }
 }
 
 function buttonOperation(operator){
     currentOperator = operator;
-    equals();
-    previousValue = displayValue;
-    displayScreen.textContent = displayValue;
+    equals();   
+    previousValue = currentValue;
+    displayCurrent.textContent = currentValue;
+    displayPrevious.textContent = previousValue;
 }
 
 equal.addEventListener('click', () => {
@@ -115,20 +120,24 @@ const btnDivide = document.querySelector('#divide');
 
 btnAdd.addEventListener('click', () => {
     buttonOperation(add);
+    displayOperator.textContent = '+';
 });
 
 
 btnSubtract.addEventListener('click', () => {
     buttonOperation(subtract);
+    displayOperator.textContent = '-';
 });
 
 
 btnMultiply.addEventListener('click', () => {
     buttonOperation(multiply);
+    displayOperator.textContent = 'x';
 });
 
 
 btnDivide.addEventListener('click', () => {
     buttonOperation(divide);
+    displayOperator.textContent = '/';
 });
 
