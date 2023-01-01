@@ -67,11 +67,14 @@ function addToDisplay(char){
     displayCurrent.textContent = computationString;
 }
 function removeFromDisplay(){
-    newString = computationString.trim().slice(0,-1).trim();
-    computationString = newString;
+    if (computationString[computationString.length-1] == ' '){
+        computationString = computationString.slice(0, -3);
 
-
-    
+    } else{
+        computationString = computationString.slice(0, -1);
+    }
+    displayCurrent.textContent = computationString;
+    displayAnswer.textContent = '';
 }
 
 
