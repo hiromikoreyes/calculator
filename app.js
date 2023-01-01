@@ -43,7 +43,7 @@ displayValue = '';
 previousValue = ''
 
 //Number Buttons
-const displayScreen = document.querySelector('#display-screen');
+const displayScreen = document.querySelector('#display-current');
 const equal = document.querySelector('#equal');
 const clear = document.querySelector('#clear');
 
@@ -95,6 +95,13 @@ function equals(){
     }
 }
 
+function buttonOperation(operator){
+    currentOperator = operator;
+    equals();
+    previousValue = displayValue;
+    displayScreen.textContent = displayValue;
+}
+
 equal.addEventListener('click', () => {
     equals();
 });
@@ -105,34 +112,23 @@ const btnSubtract = document.querySelector('#subtract');
 const btnMultiply = document.querySelector('#multiply');
 const btnDivide = document.querySelector('#divide');
 
+
 btnAdd.addEventListener('click', () => {
-    currentOperator = add;
-    equals();
-    previousValue = displayValue;
-    displayScreen.textContent = displayValue;
+    buttonOperation(add);
 });
 
 
 btnSubtract.addEventListener('click', () => {
-    currentOperator = subtract;
-    equals();
-    previousValue = displayValue;
-    displayScreen.textContent = displayValue;
+    buttonOperation(subtract);
 });
 
 
 btnMultiply.addEventListener('click', () => {
-    currentOperator = multiply;
-    equals();
-    previousValue = displayValue;
-    displayScreen.textContent = displayValue;
+    buttonOperation(multiply);
 });
 
 
 btnDivide.addEventListener('click', () => {
-    currentOperator = divide;
-    equals();
-    previousValue = displayValue;
-    displayScreen.textContent = displayValue;
+    buttonOperation(divide);
 });
 

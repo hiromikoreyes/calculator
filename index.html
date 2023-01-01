@@ -10,44 +10,59 @@
     </head>
 
     <body>
-        <div id="calculator">
-            <div id="display-screen"></div>
+        <div class="calculator">
+            <div class="display-screen">
+                <div class="display-top">
+                    <span id="display-previous">0</span> <span id="display-operation">+</span>
+                </div>
+                <div class="display-bottom">
+                    <div id="display-current"></div>
+                </div>
+            </div>
 
             <div class="buttons">
-                <div id="number-grid">
-                    <button id="clear">clear</button>
+                <div class="left-buttons">
+                    <button id="clear">AC</button>
+                    <button id="plus-minus">+ / -</button>
+                    <button id="multiply">x</button>
+                    
 
+
+                    
                     <button id="one">1</button>
                     <button id="two">2</button>
                     <button id="three">3</button>
 
-                    <button id="add">+</button>
+                    
 
                     <button id="four">4</button>
                     <button id="five">5</button>
                     <button id="six">6</button>
 
-                    <button id="subtract">-</button>
+                    
 
                     <button id="seven">7</button>
                     <button id="eight">8</button>
                     <button id="nine">9</button>
 
+                    
+
+                    <div class="bottom">
+                        <button id="zero">0</button>
+                        <button id="decimal">.</button>
+                        <button id="delete">DEL</button>
+                    </div>
+                </div>
+                
+                <div class="right-buttons">
                     <button id="divide">/</button>
-
-                    <button id="zero">0</button>
-                    <button id="decimal">.</button>
-                </div>
-
-                <div id="operators">
-                    
-                    
-                    
-                    <button id="multiply">x</button>
+                    <button id="add">+</button>
+                    <button id="subtract">-</button>
                     <button id="equal">=</button>
-                    
                 </div>
+
             </div>
+
         </div>
     </body>
 

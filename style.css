@@ -5,7 +5,7 @@ body{
     background-color: aliceblue;
 }
 
-#calculator{
+.calculator{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,41 +17,69 @@ body{
 }
 
 
-#display-screen{
+.display-screen{
     margin-top: 30px;
-    width: 300px;
+    width: 332px;
     height: 100px;
     padding: 8px;
+    border-radius: 20px;
     background-color: white;
+    font-size: 24px;
 }
 
-#number-grid{
+
+.buttons{
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    min-height: 360px;
+    justify-content: center;
+}
+
+.left-buttons{
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
-    background-color: greenyellow;
+    width: 66%;
     align-items: space-between;
     justify-content: space-between;
     align-self: flex-start;
     gap: 12px;
-
-
 }
 
 
-
-#decimal{
-    flex-grow: 1;
-    margin-left: 9px;
-}
-
-
-#number-grid button{
+.left-buttons button{
     border-radius: 18px;
     width: 72px;
     height: 72px;
+    font-size: large;
+    font-weight: bolder;
 }
 
-#clear{
-    width: 80px;   
+.right-buttons{
+    display: flex;
+    flex-direction: column;
+    padding-left: 24px;
+    gap:12px;
 }
+
+.right-buttons button{
+    border-radius: 18px;
+    width: 72px;
+    height: 72px;
+    font-size: large;
+    font-weight: bolder;
+}
+
+#divide, #add, #subtract{
+    flex-shrink: 0;
+}
+
+#equal{
+    height: 50%;
+}
+
+.bottom{
+    display: flex;
+    gap: 24px;
+    min-width: 100%;
+}
+
