@@ -4,9 +4,11 @@ Display Functions
 computationString = '';
 
 //Function Buttons
+const displayAnswer = document.querySelector('#display-answer');
 const displayCurrent = document.querySelector('#display-current');
 const equal = document.querySelector('#equal');
 const clear = document.querySelector('#clear');
+const del = document.querySelector('#delete');
 
 
 
@@ -20,7 +22,7 @@ const btnAdd = document.querySelector('#add');
 const btnSubtract = document.querySelector('#subtract');
 const btnMultiply = document.querySelector('#multiply');
 const btnDivide = document.querySelector('#divide');
-const btnDecimal = document.querySelector('#decimal');
+const decimal = document.querySelector('#decimal');
 
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
@@ -38,7 +40,7 @@ closedBracket.addEventListener('click', () => addToDisplay(')'));
 
 btnAdd.addEventListener('click', () => addToDisplay(' + '));
 btnSubtract.addEventListener('click', () => addToDisplay(' - '));
-btnMultiply.addEventListener('click', () => addToDisplay(' x '));
+btnMultiply.addEventListener('click', () => addToDisplay(' * '));
 btnDivide.addEventListener('click', () => addToDisplay(' / '));
 
 
@@ -52,13 +54,24 @@ seven.addEventListener('click', () => addToDisplay('7'));
 eight.addEventListener('click', () => addToDisplay('8'));
 nine.addEventListener('click', () => addToDisplay('9'));
 zero.addEventListener('click', () => addToDisplay('0'));
-btnDecimal.addEventListener('click', () => addToDisplay('.'));
+decimal.addEventListener('click', () => addToDisplay('.'));
 
+
+del.addEventListener('click', () => removeFromDisplay());
+
+//Keyboard input
 
 
 function addToDisplay(char){
     computationString += char;
     displayCurrent.textContent = computationString;
+}
+function removeFromDisplay(){
+    newString = computationString.trim().slice(0,-1).trim();
+    computationString = newString;
+
+
+    
 }
 
 
@@ -66,38 +79,25 @@ function addToDisplay(char){
 clear.addEventListener('click', () =>{
     computationString = '';
     displayCurrent.textContent = '';
+    displayAnswer.textContent = '';
 });
 
 
 /*
-The interpreter of the terms good luck this is harder
+The interpreter of the terms good luck this is harder than you thought
+Revisit this when you get good for now just use eval
 */
 
 //equal button
 function equals(phrase){
-    segmentTerms(phrase)
-
-
+    displayAnswer.textContent = eval(phrase)
+    console.log(eval(phrase));
 }
-
-function segmentTerms(phrase){
-    /* Return an array of math terms, from the phrase.
-
-    Ex. phrase = '(3 + 4) x 7 + 4' returns [(3+4), arr[0] x 7, arr[1] + 4]
-    
-    Ex. 1 + 5 is a math term
-
-    */
-}
-
 
 
 equal.addEventListener('click', () => {
-    equals();
+    equals(computationString);
 });
 
 
-
-
-
-
+//recreate eval()
