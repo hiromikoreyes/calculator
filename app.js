@@ -1,54 +1,26 @@
 /* 
-Calculator Functions
-*/
-
-function add(a,b){
-    return a + b;
-}
-
-function multiply(a,b){
-    return a * b;
-}
-
-function subtract(a,b){
-    return a - b;
-}
-
-function divide(a,b){
-    return a/b;
-}
-
-function operate(operator, a, b){
-    /*Given the first parameter, perform the corresponding
-    arithmetic operation. with a and b*/
-    switch(operator){
-        case add:
-            return add(a,b);
-        case multiply:
-            return multiply(a,b);
-        case subtract:
-            return subtract(a,b);
-        case divide:
-            return divide(a,b);
-    }
-}
-
-/* 
 Display Functions
 */
+computationString = '';
 
-
-currentOperator = '';
-currentValue = '';
-previousValue = ''
-
-//Number Buttons
+//Function Buttons
 const displayCurrent = document.querySelector('#display-current');
-const displayPrevious = document.querySelector('#display-previous');
-const displayOperator = document.querySelector('#display-operator');
 const equal = document.querySelector('#equal');
 const clear = document.querySelector('#clear');
 
+
+
+
+//Typing Buttons
+
+const openBracket = document.querySelector('#open-bracket');
+const closedBracket = document.querySelector('#closed-bracket');
+
+const btnAdd = document.querySelector('#add');
+const btnSubtract = document.querySelector('#subtract');
+const btnMultiply = document.querySelector('#multiply');
+const btnDivide = document.querySelector('#divide');
+const btnDecimal = document.querySelector('#decimal');
 
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
@@ -61,83 +33,71 @@ const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
 
+openBracket.addEventListener('click', () => addToDisplay('('));
+closedBracket.addEventListener('click', () => addToDisplay(')'));
 
-one.addEventListener('click', () => addDigitToDisplay('1'));
-two.addEventListener('click', () => addDigitToDisplay('2'));
-three.addEventListener('click', () => addDigitToDisplay('3'));
-four.addEventListener('click', () => addDigitToDisplay('4'));
-five.addEventListener('click', () => addDigitToDisplay('5'));
-six.addEventListener('click', () => addDigitToDisplay('6'));
-seven.addEventListener('click', () => addDigitToDisplay('7'));
-eight.addEventListener('click', () => addDigitToDisplay('8'));
-nine.addEventListener('click', () => addDigitToDisplay('9'));
-zero.addEventListener('click', () => addDigitToDisplay('0'));
+btnAdd.addEventListener('click', () => addToDisplay(' + '));
+btnSubtract.addEventListener('click', () => addToDisplay(' - '));
+btnMultiply.addEventListener('click', () => addToDisplay(' x '));
+btnDivide.addEventListener('click', () => addToDisplay(' / '));
 
 
-function addDigitToDisplay(num){
-    //Add the digit num, to the end of the currentValue.
-    currentValue += num;
-    displayCurrent.textContent = currentValue;
+one.addEventListener('click', () => addToDisplay('1'));
+two.addEventListener('click', () => addToDisplay('2'));
+three.addEventListener('click', () => addToDisplay('3'));
+four.addEventListener('click', () => addToDisplay('4'));
+five.addEventListener('click', () => addToDisplay('5'));
+six.addEventListener('click', () => addToDisplay('6'));
+seven.addEventListener('click', () => addToDisplay('7'));
+eight.addEventListener('click', () => addToDisplay('8'));
+nine.addEventListener('click', () => addToDisplay('9'));
+zero.addEventListener('click', () => addToDisplay('0'));
+btnDecimal.addEventListener('click', () => addToDisplay('.'));
+
+
+
+function addToDisplay(char){
+    computationString += char;
+    displayCurrent.textContent = computationString;
 }
 
 
 //clear button
 clear.addEventListener('click', () =>{
-    currentValue = '';
-    previousValue = '';
-    currentOperator = '';
+    computationString = '';
     displayCurrent.textContent = '';
-    displayPrevious.textContent = '';
 });
 
 
+/*
+The interpreter of the terms good luck this is harder
+*/
+
 //equal button
-function equals(){
-    if (previousValue != ''){
-        currentValue = operate(currentOperator, (previousValue/1), (currentValue/1));
-        displayCurrent.textContent = currentValue;
-    }
+function equals(phrase){
+    segmentTerms(phrase)
+
+
 }
 
-function buttonOperation(operator){
-    currentOperator = operator;
-    equals();   
-    previousValue = currentValue;
-    displayCurrent.textContent = currentValue;
-    displayPrevious.textContent = previousValue;
+function segmentTerms(phrase){
+    /* Return an array of math terms, from the phrase.
+
+    Ex. phrase = '(3 + 4) x 7 + 4' returns [(3+4), arr[0] x 7, arr[] + 4]
+    
+    Ex. 1 + 5 is a math term
+
+    */
 }
+
+
 
 equal.addEventListener('click', () => {
     equals();
 });
 
 
-const btnAdd = document.querySelector('#add');
-const btnSubtract = document.querySelector('#subtract');
-const btnMultiply = document.querySelector('#multiply');
-const btnDivide = document.querySelector('#divide');
 
 
-btnAdd.addEventListener('click', () => {
-    buttonOperation(add);
-    displayOperator.textContent = '+';
-});
 
-
-btnSubtract.addEventListener('click', () => {
-    buttonOperation(subtract);
-    displayOperator.textContent = '-';
-});
-
-
-btnMultiply.addEventListener('click', () => {
-    buttonOperation(multiply);
-    displayOperator.textContent = 'x';
-});
-
-
-btnDivide.addEventListener('click', () => {
-    buttonOperation(divide);
-    displayOperator.textContent = '/';
-});
 

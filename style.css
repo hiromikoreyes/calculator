@@ -62,16 +62,6 @@ body{
     gap:12px;
 }
 
-
-#divide, #add, #subtract{
-    flex-shrink: 0;
-}
-
-#equal{
-    border-radius: 20px;
-    height: 50%;
-}
-
 .bottom{
     display: flex;
     gap: 24px;
