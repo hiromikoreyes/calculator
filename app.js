@@ -83,7 +83,7 @@ function equals(phrase){
 function segmentTerms(phrase){
     /* Return an array of math terms, from the phrase.
 
-    Ex. phrase = '(3 + 4) x 7 + 4' returns [(3+4), arr[0] x 7, arr[] + 4]
+    Ex. phrase = '(3 + 4) x 7 + 4' returns [(3+4), arr[0] x 7, arr[1] + 4]
     
     Ex. 1 + 5 is a math term
 
