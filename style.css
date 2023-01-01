@@ -26,6 +26,8 @@ body{
     border-radius: 20px;
     background-color: white;
     font-size: 24px;
+    overflow: auto;
+    word-wrap: break-word;
 }
 
 

@@ -61,15 +61,34 @@ del.addEventListener('click', () => removeFromDisplay());
 
 //Keyboard input
 
+window.addEventListener('keydown', (event) => {
+    for (i = 0; i < 10; i ++){
+        if(event.key == `${i}`){addToDisplay(`${i}`)}
+    }
+
+    if(event.key == '+'){addToDisplay(' + ')}
+    if(event.key == '-'){addToDisplay(' - ')}
+    if(event.key == '/'){addToDisplay(' / ')}
+    if(event.key == '*'){addToDisplay(' * ')}
+
+    if(event.key == 'Enter'){equals(computationString)}
+    if(event.key == '='){equals(computationString)}
+    if(event.key == '.'){addToDisplay('.')}
+    if(event.key == '('){addToDisplay('(')}
+    if(event.key == ')'){addToDisplay(')')}
+    if(event.key == 'Backspace'){removeFromDisplay()}
+});
+
 
 function addToDisplay(char){
     computationString += char;
     displayCurrent.textContent = computationString;
 }
+
+
 function removeFromDisplay(){
     if (computationString[computationString.length-1] == ' '){
         computationString = computationString.slice(0, -3);
-
     } else{
         computationString = computationString.slice(0, -1);
     }
@@ -90,6 +109,7 @@ clear.addEventListener('click', () =>{
 The interpreter of the terms good luck this is harder than you thought
 Revisit this when you get good for now just use eval
 */
+
 
 //equal button
 function equals(phrase){
